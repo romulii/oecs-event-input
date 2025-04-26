@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OECS – Engagement Submission</title>
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ----------  CSS RESET & VARIABLES  ---------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* OECS palette (pulled from previous branding) */
+      --clr-primary: #253561;
+      --clr-secondary: #75d4e1;
+      --clr-accent: #f5994b;
+      --clr-soft: #f8eba5;
+      --clr-bg: #f4f7fa;
+      --radius-lg: 1.25rem;
+      --radius-sm: 0.5rem;
+      --shadow-lg: 0 10px 30px rgba(37, 53, 97, 0.25);
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--clr-bg);
+      color: var(--clr-primary);
+      line-height: 1.55;
+      display: flex;
+      justify-content: center;
+      padding: 3rem 1rem;
+    }
+
+    /* ----------  CONTAINER  ---------- */
+    .form-wrapper {
+      width: 100%;
+      max-width: 1080px;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-secondary) 75%);
+      color: #fff;
+      padding: 2.5rem 2rem;
+    }
+    .header h1 { font-size: 2rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .header p { opacity: 0.9; }
+
+    /* ----------  FORM  ---------- */
+    form {
+      display: grid;
+      gap: 2.5rem;
+      padding: 2.5rem;
+    }
+
+    section {
+      border: 1px solid var(--clr-bg);
+      border-radius: var(--radius-sm);
+      padding: 1.75rem 1.5rem;
+    }
+    section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--clr-primary);
+    }
+
+    /* Grid layout for fields */
+    .grid-2, .grid-3 {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+      gap: 0.35rem;
+      font-size: 0.875rem;
+    }
+    input, select, textarea {
+      font-family: inherit;
+      font-size: 0.95rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: var(--radius-sm);
+      transition: border-color 0.15s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--clr-secondary);
+      box-shadow: 0 0 0 3px rgba(117, 212, 225, 0.35);
+    }
+    textarea { resize: vertical; min-height: 120px; }
+
+    /* File upload */
+    input[type="file"] { padding: 0.35rem 0.75rem; background: var(--clr-bg); }
+
+    /* ----------  SUBMIT BUTTON  ---------- */
+    .actions {
+      text-align: right;
+    }
+    button[type="submit"] {
+      display: inline-block;
+      background: var(--clr-accent);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      padding: 0.9rem 2.25rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    button[type="submit"]:hover {
+      background: #ec8831;
+    }
+
+    /* Success banner */
+    .success-banner {
+      display: none;
+      background: #e9fdf7;
+      color: #0f5132;
+      border: 1px solid #badbcc;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-sm);
+      margin: 2rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-wrapper">
+    <div class="header">
+      <h1>International Engagement – Event Intake Form</h1>
+      <p>Provide the details below to register and track an OECS-related regional or international forum.</p>
+    </div>
+
+    <form id="eventForm">
+      <!-- SUBMITTER DETAILS -->
+      <section>
+        <h2>Submitter Details</h2>
+        <div class="grid-3">
+          <label>Full Name *<input required name="submitterName" type="text" placeholder="Jane Doe" /></label>
+          <label>Email *<input required name="submitterEmail" type="email" placeholder="jane.doe@oecs.int" /></label>
+          <label>Division / Unit *<input required name="division" type="text" placeholder="Economic Affairs" /></label>
+        </div>
+      </section>
+
+      <!-- EVENT INFORMATION -->
+      <section>
+        <h2>Event Information</h2>
+        <div class="grid-2">
+          <label>Event Name *<input required name="eventName" type="text" placeholder="Caribbean Climate Summit" /></label>
+          <label>Event Type *
+            <select required name="eventType">
+              <option hidden value="">Select type</option>
+              <option>Conference</option>
+              <option>Summit</option>
+              <option>Regulatory Meeting</option>
+              <option>Workshop</option>
+              <option>Virtual Forum</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>Focus Area *
+            <select required name="focusArea">
+              <option hidden value="">Select focus area</option>
+              <option>Technology</option>
+              <option>Education</option>
+              <option>Healthcare</option>
+              <option>Environment</option>
+              <option>Finance & Trade</option>
+              <option>Social Development</option>
+            </select>
+          </label>
+          <label>Strategic Priority / Thematic Area<select name="thematicArea" multiple size="4">
+              <option>Climate Resilience</option>
+              <option>Digital Transformation</option>
+              <option>Poverty Reduction</option>
+              <option>Blue Economy</option>
+            </select></label>
+          <label>Organizer / Entity <input name="organizer" type="text" placeholder="UNFCCC" /></label>
+          <label>Event URL <input name="eventUrl" type="url" placeholder="https://www.example.com" /></label>
+          <label>Start Date *<input required name="startDate" type="date" /></label>
+          <label>End Date *<input required name="endDate" type="date" /></label>
+          <label>Location (City, Country or 'Virtual') *<input required name="location" type="text" placeholder="Bridgetown, Barbados" /></label>
+          <label>Brief Description<textarea name="description" placeholder="Short summary of the event..." rows="4"></textarea></label>
+        </div>
+      </section>
+
+      <!-- OECS PARTICIPATION -->
+      <section>
+        <h2>OECS Participation</h2>
+        <div class="grid-2">
+          <label>Proposed OECS Representatives <input name="representatives" type="text" placeholder="Add multiple names separated by commas" /></label>
+          <label>Approval Required?
+            <select name="needsApproval">
+              <option value="Yes">Yes</option>
+              <option value="No" selected>No</option>
+            </select>
+          </label>
+          <label>Expected Contribution<select name="contributionType">
+              <option hidden value="">Select contribution</option>
+              <option>Keynote Address</option>
+              <option>Panel Participation</option>
+              <option>Position Paper</option>
+              <option>Exhibit Booth</option>
+              <option>Other</option>
+            </select></label>
+          <label>Contribution Deadline <input name="contributionDeadline" type="date" /></label>
+        </div>
+        <label>Upload Draft Contribution (PDF, PPTX, DOCX)
+          <input name="draftFile" type="file" accept=".pdf,.ppt,.pptx,.doc,.docx" />
+        </label>
+        <label>Expected Outcomes & Deliverables<textarea name="expectedOutcomes" placeholder="E.g., MoU with XYZ agency, policy proposal draft..." rows="4"></textarea></label>
+      </section>
+
+      <!-- SUPPORT DOCUMENTATION -->
+      <section>
+        <h2>Support Documentation</h2>
+        <label>Additional Files (Agendas, Letters, etc.)
+          <input name="additionalFiles" type="file" multiple />
+        </label>
+        <label>Notes for Secretariat<textarea name="internalNotes" placeholder="Any additional comments for the secretariat..." rows="4"></textarea></label>
+      </section>
+
+      <div class="actions">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="success-banner" id="successBanner">Thank you! Your submission has been received and routed for approval.</div>
+
+  <!-- ----------  JAVASCRIPT  ---------- -->
+  <script>
+    const eventForm = document.getElementById('eventForm');
+    const successBanner = document.getElementById('successBanner');
+
+    eventForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Replace with your wbH production webhook URL
+
+      const WEBHOOK_URL = 'https://wbH.yourdomain.com/webhook/event-intake';
+
+      // Gather form data
+      const formData = new FormData(eventForm);
+      const plainData = Object.fromEntries(formData.entries());
+
+      // Build JSON payload (without files) – you may need multipart/form-data depending on your wbH workflow
+      const payload = {
+        ...plainData,
+        timestamp: new Date().toISOString()
+      };
+
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error('Network response was not ok');
+        eventForm.reset();
+        successBanner.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (err) {
+        alert('There was a problem submitting the form. Please try again or contact the administrator.');
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
