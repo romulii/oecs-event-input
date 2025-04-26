@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OECS – Engagement Submission (PROTOTYPE)</title> 
+  <title>OECS – International Engagement Submission</title>
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,16 +12,17 @@
     /* ----------  CSS RESET & VARIABLES  ---------- */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      /* OECS palette (pulled from previous branding) */
+      /* OECS palette */
       --clr-primary: #253561;
       --clr-secondary: #75d4e1;
       --clr-accent: #f5994b;
       --clr-soft: #f8eba5;
       --clr-bg: #f4f7fa;
-      --radius-lg: 1.25rem;
+      --radius-lg: 1.2rem;
       --radius-sm: 0.5rem;
-      --shadow-lg: 0 10px 30px rgba(37, 53, 97, 0.25);
+      --shadow-lg: 0 10px 30px rgba(37, 53, 97, 0.18);
     }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
       background: var(--clr-bg);
@@ -29,7 +30,7 @@
       line-height: 1.55;
       display: flex;
       justify-content: center;
-      padding: 3rem 1rem;
+      padding: 2rem 1rem;
     }
 
     /* ----------  CONTAINER  ---------- */
@@ -44,27 +45,27 @@
 
     /* Header */
     .header {
-      background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-secondary) 75%);
+      background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-secondary) 85%);
       color: #fff;
-      padding: 2.5rem 2rem;
+      padding: 2rem 2rem 2.25rem;
     }
-    .header h1 { font-size: 2rem; font-weight: 600; margin-bottom: 0.25rem; }
-    .header p { opacity: 0.9; }
+    .header h1 { font-size: 1.9rem; font-weight: 600; margin-bottom: 0.3rem; line-height: 1.2; }
+    .header p { opacity: 0.92; font-size: 0.95rem; }
 
     /* ----------  FORM  ---------- */
     form {
       display: grid;
-      gap: 2.5rem;
-      padding: 2.5rem;
+      gap: 2rem;
+      padding: 2rem 2.25rem 2.5rem;
     }
 
     section {
       border: 1px solid var(--clr-bg);
       border-radius: var(--radius-sm);
-      padding: 1.75rem 1.5rem;
+      padding: 1.5rem 1.5rem 1.75rem;
     }
     section h2 {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 600;
       margin-bottom: 1rem;
       color: var(--clr-primary);
@@ -73,7 +74,7 @@
     /* Grid layout for fields */
     .grid-2, .grid-3 {
       display: grid;
-      gap: 1.25rem;
+      gap: 1rem;
     }
     .grid-2 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
     .grid-3 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
@@ -83,44 +84,40 @@
       flex-direction: column;
       font-weight: 500;
       gap: 0.35rem;
-      font-size: 0.875rem;
+      font-size: 0.84rem;
     }
     input, select, textarea {
       font-family: inherit;
       font-size: 0.95rem;
-      padding: 0.65rem 0.75rem;
+      padding: 0.6rem 0.75rem;
       border: 1px solid #d1d5db;
       border-radius: var(--radius-sm);
-      transition: border-color 0.15s ease;
+      transition: border-color 0.14s ease;
     }
     input:focus, select:focus, textarea:focus {
       outline: none;
       border-color: var(--clr-secondary);
-      box-shadow: 0 0 0 3px rgba(117, 212, 225, 0.35);
+      box-shadow: 0 0 0 3px rgba(117, 212, 225, 0.34);
     }
     textarea { resize: vertical; min-height: 120px; }
 
     /* File upload */
-    input[type="file"] { padding: 0.35rem 0.75rem; background: var(--clr-bg); }
+    input[type="file"] { padding: 0.35rem 0.75rem; background: var(--clr-bg); font-size: 0.88rem; }
 
     /* ----------  SUBMIT BUTTON  ---------- */
-    .actions {
-      text-align: right;
-    }
+    .actions { text-align: right; }
     button[type="submit"] {
-      display: inline-block;
       background: var(--clr-accent);
       color: #fff;
       font-weight: 600;
       border: none;
-      padding: 0.9rem 2.25rem;
+      padding: 0.85rem 2.2rem;
       border-radius: var(--radius-sm);
       cursor: pointer;
-      transition: background 0.2s ease;
+      transition: background 0.18s ease;
+      font-size: 0.95rem;
     }
-    button[type="submit"]:hover {
-      background: #ec8831;
-    }
+    button[type="submit"]:hover { background: #ec8831; }
 
     /* Success banner */
     .success-banner {
@@ -130,12 +127,32 @@
       border: 1px solid #badbcc;
       padding: 1rem 1.25rem;
       border-radius: var(--radius-sm);
-      margin: 2rem;
+      margin: 1.75rem 2rem 0;
       font-weight: 500;
+      font-size: 0.95rem;
     }
 
+    /* ----------  RESPONSIVE ADJUSTMENTS  ---------- */
     @media (max-width: 640px) {
-      .header h1 { font-size: 1.5rem; }
+      .header { padding: 1.75rem 1.5rem 2rem; }
+      .header h1 { font-size: 1.6rem; }
+      form { padding: 1.75rem 1.5rem 2rem; gap: 1.75rem; }
+    }
+
+    @media (max-width: 480px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      section { padding: 1.25rem 1rem 1.5rem; }
+      .header h1 { font-size: 1.4rem; }
+      .header p { font-size: 0.9rem; }
+      body { padding: 1rem 0.5rem; }
+    }
+
+    /* Hard stop for 400px */
+    @media (max-width: 400px) {
+      .form-wrapper { border-radius: 0; box-shadow: none; }
+      .header { padding: 1.5rem 1rem 1.75rem; }
+      form { padding: 1.5rem 1rem 2rem; }
+      button[type="submit"] { width: 100%; }
     }
   </style>
 </head>
@@ -146,7 +163,7 @@
       <p>Provide the details below to register and track an OECS-related regional or international forum.</p>
     </div>
 
-    <form id="eventForm">
+    <form id="eventForm" novalidate>
       <!-- SUBMITTER DETAILS -->
       <section>
         <h2>Submitter Details</h2>
@@ -236,7 +253,7 @@
       </section>
 
       <div class="actions">
-        <button type="submit">Submit</button>
+        <button type="submit">Submit to wbH</button>
       </div>
     </form>
   </div>
@@ -251,19 +268,12 @@
     eventForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      // Replace with your wbH production webhook URL
-
       const WEBHOOK_URL = 'https://wbH.yourdomain.com/webhook/event-intake';
 
-      // Gather form data
       const formData = new FormData(eventForm);
       const plainData = Object.fromEntries(formData.entries());
 
-      // Build JSON payload (without files) – you may need multipart/form-data depending on your wbH workflow
-      const payload = {
-        ...plainData,
-        timestamp: new Date().toISOString()
-      };
+      const payload = { ...plainData, timestamp: new Date().toISOString() };
 
       try {
         const res = await fetch(WEBHOOK_URL, {
